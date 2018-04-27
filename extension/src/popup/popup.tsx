@@ -4,4 +4,4 @@ import 'antd/dist/antd.css';
 import "./style.scss";
 import NewBookmarkForm from "./NewBookmarkForm";
 
-ReactDOM.render(<NewBookmarkForm/>, document.getElementById('popup-root'));
+ReactDOM.render(<NewBookmarkForm url='http://example.com'/>, document.getElementById('popup-root'));

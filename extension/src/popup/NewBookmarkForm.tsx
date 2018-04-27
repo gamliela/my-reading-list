@@ -1,15 +1,26 @@
 import * as React from "react";
 import {Component} from "react";
 import style from "./style.scss";
+import Select from "antd/lib/select";
 import Button from "antd/lib/button/button";
 
-class NewBookmarkForm extends Component {
+type NewBookmarkFormProps = {
+  url: string
+}
+
+class NewBookmarkForm extends Component<NewBookmarkFormProps> {
   render() {
-    return <div className={style.NewBookmarkForm}>
-      Hello World!
-      <br/>
-      <Button type="primary">OK</Button>
-    </div>;
+    const {url} = this.props;
+    return (
+      <div className={style.NewBookmarkForm}>
+        <div className='url'>{url}</div>
+        <Select mode="tags" placeholder="Select Tags">
+          <Select.Option key='1'>Tag 1</Select.Option>
+          <Select.Option key='2'>Tag 2</Select.Option>
+        </Select>
+        <Button type="primary">Save</Button>
+      </div>
+    );
   }
 }
 
