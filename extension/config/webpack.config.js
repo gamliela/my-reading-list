@@ -39,6 +39,11 @@ const config = {
         ]
       },
       {
+        test: /\.(css)$/,
+        include: projectPath,
+        use: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.(png|jpeg|jpg|gif|svg)$/,
         include: projectPath,
         loader: 'url-loader'
