@@ -13,19 +13,14 @@ class Popup extends Component<{ popupState: PopupState }> {
     this.popupState = this.props.popupState;
   }
 
-  onSave() {
-    // save on storage map from tag to url(s);
-    // save on storage map from url to tag(s).
-  }
-
   render() {
-    const {url} = this.popupState;
+    const {url, addTag, removeTag, save} = this.popupState;
     return (
       <div className={style.NewBookmarkForm}>
         <div className='url'>{url}</div>
-        <Select mode="tags" placeholder="Select Tags" onSelect={this.popupState.addTag}
-                onDeselect={this.popupState.removeTag} dropdownStyle={{display: 'none'}}/>
-        <Button type="primary" onClick={this.onSave.bind(this)}>Save</Button>
+        <Select mode="tags" placeholder="Select Tags" onSelect={addTag} onDeselect={removeTag}
+                dropdownStyle={{display: 'none'}}/>
+        <Button type="primary" onClick={save}>Save</Button>
       </div>
     );
   }
