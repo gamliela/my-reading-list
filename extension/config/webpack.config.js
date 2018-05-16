@@ -9,7 +9,7 @@ const srcPath = path.join(projectPath, 'src');
 
 const config = {
   entry: {
-    popup: path.join(srcPath, 'popup', 'popup.tsx')
+    popup: path.join(srcPath, 'popup', 'index.tsx')
   },
   output: {
     filename: '[name].js',
@@ -58,7 +58,7 @@ const config = {
       {from: path.join(srcPath, 'manifest.json')}
     ]),
     new HtmlWebpackPlugin({
-      template: path.join(srcPath, 'popup', 'popup.html'),
+      template: path.join(srcPath, 'popup', 'index.html'),
       chunks: ['popup'],
       filename: 'popup.html'
     })
