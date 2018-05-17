@@ -1,8 +1,37 @@
-import {action, observable} from "mobx";
+import {action, observable, toJS} from "mobx";
 
 class PopupState {
-  url = "http://example.com";
-  @observable tags: string[] = [];
+  @observable url: string;
+  @observable tags;
+
+  constructor() {
+    this.loadUrl();
+    this.loadTags();
+  }
+
+  @action.bound
+  loadUrl() {
+    this.url = null;
+    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, tabs => {
+      this.url = tabs[0].url;
+    });
+  }
+
+  @action.bound
+  loadTags() {
+    this.tags = [];
+    chrome.storage.sync.get(this.url, data => {
+      const urlData = data[this.url];
+      this.tags = (urlData && urlData.tags) || [];
+    });
+  }
+
+  @action.bound
+  save() {
+    chrome.storage.sync.set({[this.url]: {tags: toJS(this.tags)}}, () => {
+      //console.log('saved!');
+    });
+  }
 
   @action.bound
   addTag(tag: string) {
@@ -13,23 +42,6 @@ class PopupState {
   @action.bound
   removeTag(tag: string) {
     this.tags = this.tags.filter(s => s !== tag);
-  }
-
-  @action.bound
-  save() {
-    // save on storage map from tag to url(s);
-    // save on storage map from url to tag(s).
-
-
-    // chrome.storage.sync.get('color', function (data) {
-    //   changeColor.style.backgroundColor = data.color;
-    //   changeColor.setAttribute('value', data.color);
-    // });
-    //
-    //
-    //
-    // chrome.storage.sync.set({color: item}, function () {
-    //});
   }
 }
 
