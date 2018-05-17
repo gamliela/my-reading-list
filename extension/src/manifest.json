@@ -6,7 +6,9 @@
     "tabs",
     "storage"
   ],
+  "omnibox": { "keyword" : "be" },
   "background": {
+    "persistent": false,
     "scripts": [
       "background.js"
     ]
