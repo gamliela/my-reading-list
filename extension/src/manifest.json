@@ -2,6 +2,7 @@
   "name": "My Reading List",
   "version": "1.0",
   "description": "Tag and Search your reading list with ease",
+  "options_page": "options.html",
   "permissions": [
     "tabs",
     "storage"

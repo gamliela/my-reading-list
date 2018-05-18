@@ -10,6 +10,7 @@ const srcPath = path.join(projectPath, 'src');
 const config = {
   entry: {
     background: path.join(srcPath, 'background', 'index.ts'),
+    options: path.join(srcPath, 'options', 'index.tsx'),
     popup: path.join(srcPath, 'popup', 'index.tsx')
   },
   output: {
@@ -58,6 +59,11 @@ const config = {
     new CopyWebpackPlugin([
       { from: path.join(srcPath, 'manifest.json') }
     ]),
+    new HtmlWebpackPlugin({
+      template: path.join(srcPath, 'options', 'index.html'),
+      chunks: ['options'],
+      filename: 'options.html'
+    }),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'popup', 'index.html'),
       chunks: ['popup'],

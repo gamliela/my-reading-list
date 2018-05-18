@@ -4,8 +4,8 @@ import 'antd/dist/antd.css';
 import "./style.scss";
 import Popup from "./Popup";
 import PopupState from "./PopupState";
-import ErrorBoundary from "./ErrorBoundary";
-import Delayed from "./Delayed";
+import ErrorBoundary from "../shared_modules/ErrorBoundary";
+import Delayed from "../shared_modules/Delayed";
 
 const initialPopupComponent = (
   <ErrorBoundary>
