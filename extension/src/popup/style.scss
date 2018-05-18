@@ -9,9 +9,21 @@ body {
     .url {
       margin-bottom: 10px;
     }
+
     .ant-select {
       width: 100%;
       margin-bottom: 10px;
+    }
+
+    .algolia-logo {
+      position: relative;
+
+      img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 1em;
+      }
     }
   }
 }
