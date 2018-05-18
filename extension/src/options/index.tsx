@@ -3,10 +3,12 @@ import * as React from "react";
 import 'antd/dist/antd.css';
 import "./style.scss";
 import ErrorBoundary from "../shared_modules/ErrorBoundary";
+import OptionsPage from "./OptionsPage";
+import OptionsPageState from "./OptionsPageState";
 
 const initialPopupComponent = (
   <ErrorBoundary>
-    Hello World
+    <OptionsPage optionsPageState={new OptionsPageState()}/>
   </ErrorBoundary>
 );
 

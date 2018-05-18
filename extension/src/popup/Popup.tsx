@@ -10,15 +10,8 @@ import algoliaLogo from "./search-by-algolia.png"
 
 @observer
 class Popup extends Component<{ popupState: PopupState }> {
-  popupState: PopupState;
-
-  constructor(props) {
-    super(props);
-    this.popupState = this.props.popupState;
-  }
-
   render() {
-    const {url, tags, addTag, removeTag, save} = this.popupState;
+    const {url, tags, addTag, removeTag, save} = this.props.popupState;
     return (
       <div className={style.NewBookmarkForm} style={{width: 500}}>
         <div className='url'>{url} {toJS(tags)}</div>
